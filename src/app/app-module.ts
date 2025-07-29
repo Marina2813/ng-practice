@@ -6,7 +6,7 @@ import { App } from './app';
 
 @NgModule({
   declarations: [
-    App
+    App,
   ],
   imports: [
     BrowserModule,
