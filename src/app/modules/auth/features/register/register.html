@@ -1,0 +1,77 @@
+<div class="position-relative vh-100 d-flex justify-content-center align-items-center login-page">
+
+  <div class="position-absolute top-0 start-0 w-100 h-100 login-background"
+       style="background: url('bg-img.jpg') no-repeat center center / cover; z-index: 0;">
+  </div>
+
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50" style="z-index: 1;"></div>
+
+  <div class="rounded-4 shadow-lg p-4 text-center"
+       style="width: 100%; max-width: 450px; z-index: 2;
+              background: rgba(0, 0, 0, 0.6);
+              backdrop-filter: blur(8px); 
+              -webkit-backdrop-filter: blur(8px);
+              color: var(--text-light);">
+    
+    <div class="site-title h3 fw-bold mb-2" style="color: var(--primary-color)">ReadZone</div>
+    <h1 class="h4 text-light mb-2">Create Account</h1>
+    <p class="text-light small mb-4">Join the journey and start writing 🌿</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div *ngIf="errorMessage" class="alert alert-danger py-2">
+        {{ errorMessage }}
+      </div>
+
+      <div class="mb-3 text-start form-group">
+        <label for="username" class="form-label text-light">Username</label>
+        <app-input-field id="username" formControlName="username" placeholder="Username"></app-input-field>
+        <div class="text-danger" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
+          <p *ngIf="registerForm.get('username')?.errors?.['required']">Username is required</p>
+        </div>
+      </div>
+
+      <div class="mb-3 text-start form-group">
+        <label for="email" class="form-label text-light">Email</label>
+        <app-input-field id="email" formControlName="email" placeholder="Email"></app-input-field>
+        <div class="text-danger" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+          <p *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</p>
+          <p *ngIf="registerForm.get('email')?.errors?.['email']">Invalid Email</p>
+        </div>
+      </div>
+
+      <div class="mb-3 text-start form-group">
+        <label for="password" class="form-label text-light">Password</label>
+        <app-input-field id="password" type="password" formControlName="password" placeholder="Password"></app-input-field>
+        <div class="text-danger" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+          <p *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</p>
+          <p *ngIf="registerForm.get('password')?.errors?.['minlength']">Should be at least 6 characters</p>
+        </div>
+      </div>
+
+      <div class="mb-3 text-start form-group">
+        <label for="confirmPassword" class="form-label text-light">Confirm Password</label>
+        <app-input-field id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password"></app-input-field>
+        <div class="text-danger" *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+          <p *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirmation is required</p>
+        </div>
+        <div class="text-danger" *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched">
+          Passwords do not match
+        </div>
+      </div>
+
+      <app-button type="submit" severity="primary" class="w-100" [disabled]="registerForm.invalid || loading">
+        <span>Register</span>
+        <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+      </app-button>
+
+      <p class="switch-text text-center small ">
+        Already have an account?
+        <a routerLink="/auth/login" class="text-primary text-decoration-none">Log in</a>
+      </p>
+      
+    </form>
+
+  </div>
+</div>
+

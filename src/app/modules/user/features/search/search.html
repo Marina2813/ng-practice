@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<section class="search-results-section">
+  <div class="search-results-container">
+
+    <h4 *ngIf="query">Search results for "{{ query }}":</h4>
+
+    <div *ngIf="loading" class="loading">Loading...</div>
+
+    <div *ngIf="!loading && results.length === 0" class="no-results">No results found.</div>
+
+    <div *ngFor="let post of results" class="search-result-card">
+      <a [routerLink]="['/posts', post.postId]" class="search-result-link">
+        <h5>{{ post.title }}</h5>
+        <p>{{ getExcerpt(post.content) }}</p>
+        <small>By {{ post.username }} on {{ post.createdDate | date }}</small>
+      </a>
+    </div>
+
+  </div>
+</section>

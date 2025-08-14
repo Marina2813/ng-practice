@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-button',
-  imports: [],
+  standalone: true,
+  imports: [ CommonModule],
   templateUrl: './button.html',
   styleUrl: './button.css'
 })
@@ -11,13 +13,16 @@ export class Button {
   @Input() disabled = false;
   @Input() text = 'Button';
   @Input() severity: 'primary' | 'secondary' | 'danger' | 'success' = 'primary';
+  @Input() isLoading = false;
+  @Input() customClasses: string[] = [];
+
 
   get classes() {
     const cls = ['btn'];
 
     switch (this.severity) {
       case 'primary':
-        cls.push('btn-primary');
+        cls.push('btn-theme-primary');
         break;
       case 'secondary':
         cls.push('btn-secondary');

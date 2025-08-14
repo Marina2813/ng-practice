@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<main class="dashboard-container">
+  <div class="dashboard-wrapper">
+
+    <div class="profile-header d-flex flex-column flex-md-row align-items-center mb-4 gap-4">
+      <img src="/avatar.png" alt="Profile Picture" class="profile-pic" />
+      <div class="user-info">
+        <h2 class="username">{{ username }}</h2>
+        <p class="bio">Aspiring writer | Lover of coffee, tech & good stories ✨</p>
+        <button class="edit-btn" (click)="editProfile()">Edit Profile</button>
+        <p class="mt-2 text-light-50">📝 {{ posts.length }} {{ posts.length === 1 ? 'post' : 'posts' }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="posts.length === 0" class="no-posts-message">
+      You haven’t written any posts yet. Start writing to see them here.
+    </div>
+
+    <div class="post-grid" *ngIf="posts.length > 0">
+      <div class="user-post-card" *ngFor="let post of posts" (click)="goToPost(post.postId)">
+        <h3>{{ post.title }}</h3>
+        <p>{{ getTagline(post.content) }}</p>
+
+        <div class="card-bottom-row" (click)="$event.stopPropagation()">
+          <div class="meta-info">
+            <span>📅 {{ post.createdDate | date: 'mediumDate' }}</span>
+            <span>💬 {{ post.commentCount }}</span>
+            <span>👏 {{ post.likeCount }}</span>
+          </div>
+
+          <div class="card-actions">
+            <button class="icon-btn" title="Edit" (click)="editPost(post.postId)">
+              <img src="/edit.png" alt="Edit" />
+            </button>
+            <button class="icon-btn" title="Delete" (click)="deletePost(post.postId)">
+              <img src="/delete.png" alt="Delete" />
+            </button>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</main>

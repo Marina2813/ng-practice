@@ -1,0 +1,11 @@
+.btn-theme-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+.btn-theme-primary:hover {
+  background-color: #7a5e30; 
+  border-color: #7a5e30;
+  color: #fff;
+}

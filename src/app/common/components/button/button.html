@@ -1,3 +1,8 @@
-<button [disabled]="disabled" [type]="type" [class]="classes">
-  <ng-content></ng-content>
+<button [disabled]="disabled" [type]="type" [ngClass]="classes">
+    <ng-container *ngIf="isLoading; else buttonText">
+    <div class="spinner-border spinner-border-sm text-light" role="status"></div>
+  </ng-container>
+  <ng-template #buttonText>
+    <ng-content></ng-content>
+  </ng-template>
 </button>

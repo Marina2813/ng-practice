@@ -1,0 +1,24 @@
+::ng-deep input {
+  color: #ffffff;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #ffffff;
+  width: 100%;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #66bfff;
+  outline: none;
+  color: #ffffff;
+}

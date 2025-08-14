@@ -1,0 +1,61 @@
+<!-- Bootstrap Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-navbar px-4 py-2 shadow-sm" style="font-family: 'Segoe UI', sans-serif;">
+  <div class="container-fluid">
+
+    <a class="navbar-brand fw-bold" routerLink="/home" style="color: #8B6E3C;">ReadZone</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link text-light" routerLink="/home">About Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-light" routerLink="/allpost">Posts</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-light" routerLink="/createpost">Write</a>
+        </li>
+        
+      </ul>
+
+    <form (submit)="onSearch($event)" class="d-flex align-items-center me-3" role="search" style="gap: 0.5rem;">
+      <input
+        [(ngModel)]="query"
+        name="query"
+        class="form-control form-control-sm bg-dark text-light border-secondary rounded-pill"
+        type="search"
+        placeholder="Search..."
+        aria-label="Search"
+        style="width: 180px; height: 36px;"
+      />
+      <button type="submit" class="icon-button">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+
+      <div class="dropdown">
+        <a class="d-flex align-items-center text-decoration-none text-light" id="profileDropdown"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="/avatar.png" alt="Avatar" width="32" height="32" class="rounded-circle me-2">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end bg-dark border-0 shadow-sm" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item text-light" routerLink="/dashboard">My Profile</a></li>
+          <li><a class="dropdown-item text-light" href="#">Settings</a></li>
+          <li><hr class="dropdown-divider border-secondary"></li>
+          <li><a (click)="logout()" class="dropdown-item text-light">Logout</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</nav>

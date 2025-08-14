@@ -1,2 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-@import 'bootstrap/dist/css/bootstrap.css';
+:root {
+  --primary-color: #8B6E3C;
+  --primary-color-hover: #a47e4b;
+  --background-dark: #111;
+  --text-light: #f1f1f1;
+  --text-muted: #aaa;  
+  --accent-color: #ffcc00;
+  --card-bg: rgba(255, 255, 255, 0.05);
+} 
+ 

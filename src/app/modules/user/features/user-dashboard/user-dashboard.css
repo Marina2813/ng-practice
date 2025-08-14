@@ -1,0 +1,161 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  font-family: 'Segoe UI', sans-serif;
+  color: #f1f1f1;
+  height: 100%;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 1rem 60px;
+  background-color: #111;
+  min-height: 100vh;
+}
+
+.dashboard-wrapper {
+  max-width: 900px;
+  width: 100%;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #8B6E3C;
+
+}
+
+.user-info .username {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+
+.bio {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #ccc;
+  margin: 0.25rem 0 1rem;
+}
+
+.edit-btn {
+  background-color: transparent;
+  border: 1px solid #8B6E3C;
+  padding: 6px 14px;
+  color: #ffcc00;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #8B6E3C;
+  color: #fff;
+}
+
+.no-posts-message {
+  text-align: center;
+  margin-top: 3rem;
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+.post-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.user-post-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.user-post-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08);
+}
+
+.user-post-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f9f9f9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.user-post-card p {
+  margin: 0.5rem 0 1rem;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #333;
+  padding-top: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.meta-info {
+  display: flex;
+  gap: 1rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.icon-btn img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dashboard-wrapper {
+    padding: 0 1rem;
+  }
+}

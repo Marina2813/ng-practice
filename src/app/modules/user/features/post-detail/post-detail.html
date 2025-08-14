@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<main class="post-container">
+    <div class="post-wrapper">
+  <a routerLink="/allpost" class="back-link">← Back to all posts</a>
+
+  <h1 class="post-title">{{ post.title }}</h1>
+  <p class="post-tagline">{{ getTagline(post.content?post.content.split('.')[0] : ''  )}}</p>
+
+  <div class="post-meta">
+    <span>👤 <strong>{{ post.username || 'Unknown' }}</strong></span> •
+    <span>📅 {{ post.createdDate | date: 'mediumDate' }}</span>
+  </div>
+
+  <div class="like-container">
+    <span class="heart-icon" [class.liked]="userLiked" (click)="toggleLike()">♥</span>
+    <span class="like-count">{{ likeCount }}</span>
+  </div>
+
+  <img src="/post2.png" alt="Featured image" class="post-image" />
+
+  <div class="post-content"> 
+    <p [innerHTML]="getFormattedContent(post.content)"></p>
+  </div>
+
+  <div class="comments-section">
+  <h3>Responses</h3>
+
+  <div class="comment-input">
+    <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+  <textarea formControlName="content"
+            placeholder="What are your thoughts?"
+            rows="1"
+            (focus)="expandTextarea($event)"
+            (blur)="shrinkTextarea($event)">
+  </textarea>
+  <button type="submit" [disabled]="!commentForm.value.content?.trim()">Post</button>
+</form>
+  </div>
+
+  <div *ngFor="let comment of comments" class="comment-card">
+    <div class="comment-header">
+      <span class="comment-author">{{ comment.name }}</span>
+      <span class="comment-date">{{ comment.timestamp | date:'MMM d, y · HH:mm'  }}</span>
+    </div>
+    <p class="comment-content">{{ comment.content }}</p>
+
+    <button *ngIf="comment.isOwner"
+            class="delete-btn"
+            (click)="deleteComment(comment.commentId)">
+      Delete
+    </button> 
+  </div>
+</div>
+</div>
+</main>
+<ng-template #loadingOrError>
+  @if (loading) {
+    <p>Loading post...</p>
+  }
+  @if (error) {
+    <p>{{ error }}</p>
+  }
+</ng-template>
+
+
